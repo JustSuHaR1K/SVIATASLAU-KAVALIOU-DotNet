@@ -9,6 +9,9 @@ namespace Lab1
 {
     class Program
     {
+        const string jsonType = "JSON";
+        const string excelType = "EXCEL";
+
         static void Main(string[] args)
         {
             List<Student> students = new List<Student>();
@@ -24,12 +27,12 @@ namespace Lab1
                            CSVReader reader = new CSVReader();
                            students = reader.Read(inputFile);
                        }
-                       if (o.FileType.ToUpper() == "JSON")
+                       if (o.FileType.ToUpper() == jsonType)
                        {
                            JsonWriter jsonWriter = new JsonWriter();
                            jsonWriter.Write(students, $"{outputFile}.json");
                        }
-                       else if (o.FileType.ToUpper() == "EXCEL" || o.FileType.ToLower() == "xls")
+                       else if (o.FileType.ToUpper() == excelType)
                        {
                            ExcelWriter excelWriter = new ExcelWriter();
                            excelWriter.Write(students, $"{outputFile}.xls");

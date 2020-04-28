@@ -6,7 +6,7 @@ using System.IO;
 
 namespace Lab1.Services
 {
-    class ExcelWriter : IWriter
+    public class ExcelWriter : IWriter
     {
         public void Write(IEnumerable<Student> students, string fileName)
         {

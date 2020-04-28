@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Lab1.Services
 {
-    class JsonWriter : IWriter
+    public class JsonWriter : IWriter
     {
         public void Write(IEnumerable<Student> students, string fileName)
         {

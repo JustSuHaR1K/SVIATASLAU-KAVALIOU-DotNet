@@ -46,24 +46,9 @@ namespace Lab1.Services
                                 index++;
                                 listOfSubjects.Add(subject);
                             }
-                            catch (ArgumentException)
+                            catch (Exception e)
                             {
-                                logger.Error($"Student's {csv.Context.HeaderRecord[0]} mark of {csv.Context.HeaderRecord[index]} isn't integer");
-                                throw;
-                            }
-                            catch (IndexOutOfRangeException)
-                            {
-                                logger.Error($"Student's {csv.Context.HeaderRecord[0]} count of subjects didn't match the count of marks");
-                                throw;
-                            }
-                            catch (TypeConverterException)
-                            {
-                                logger.Error($"Student's {csv.Context.HeaderRecord[0]} mark of {csv.Context.HeaderRecord[index]} can't be converted in integer");
-                                throw;
-                            }
-                            catch (Exception)
-                            {
-                                logger.Error("Unexpected error");
+                                logger.Error(e.Message);
                                 throw;
                             }
                         }
