@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace Lab1.Interfaces
 {
-    public interface IWriter
+    interface IWriter
     {
-        public void Write(IEnumerable<Student> students, string fileName);
+        void Write(IEnumerable<Student> students, string fileName);
     }
 }

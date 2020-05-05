@@ -5,6 +5,6 @@ namespace Lab1.Interfaces
 {
     interface IReader
     {
-        public List<Student> Read(string path);
+        List<Student> Read(string path);
     }
 }
