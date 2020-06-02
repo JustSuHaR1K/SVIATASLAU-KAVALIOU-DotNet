@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Eventus.ConsoleUI.Configuration.NinjectConfiguration" Collapsed="true">
+    <Position X="4.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAIAAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Configuration\NinjectConfiguration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Eventus.ConsoleUI.Services.AdminConsoleService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAACAAAAAAIAAAAABACAAAAAAAAA=</HashCode>
+      <FileName>Services\AdminConsoleService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Eventus.ConsoleUI.Services.EventConsoleService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAIIAAAAABAIAAAAAIAAA=</HashCode>
+      <FileName>Services\EventConsoleService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Eventus.ConsoleUI.Services.MasterConsoleService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAAAAAAAIAYIAAAAEBAAAAAAAAAAA=</HashCode>
+      <FileName>Services\MasterConsoleService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Eventus.ConsoleUI.Services.OrderConsoleService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAIIAAAAABAEAAAIAAAAA=</HashCode>
+      <FileName>Services\OrderConsoleService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Eventus.ConsoleUI.Services.RoleService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAIAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Services\RoleService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Eventus.ConsoleUI.ConsoleHelper" Collapsed="true">
+    <Position X="4.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>ConsoleHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Event.ConsoleUI.Program" Collapsed="true">
+    <Position X="2.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Eventus.ConsoleUI.Interfaces.IConsoleService&lt;T&gt;" Collapsed="true">
+    <Position X="2.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IConsoleService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Eventus.ConsoleUI.Enums.AdminsEventMenu" Collapsed="true">
+    <Position X="2.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAACAAAAAAADCAAIAAAAAIAIAAAAAAA=</HashCode>
+      <FileName>Enums\AdminsEventMenu.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Eventus.ConsoleUI.Enums.AdminsMasterMenu" Collapsed="true">
+    <Position X="4.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAABABIAAAAAABAAAAAIAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Enums\AdminsMasterMenu.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Eventus.ConsoleUI.Enums.AdminsMenu" Collapsed="true">
+    <Position X="6.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAACAAAAAAAAQAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enums\AdminsMenu.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Eventus.ConsoleUI.Enums.AdminsOrderMenu" Collapsed="true">
+    <Position X="2.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAKAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Enums\AdminsOrderMenu.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Eventus.ConsoleUI.Enums.MainMenu" Collapsed="true">
+    <Position X="4.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAAAAAAAAAAEAAAAAIAAAAAAAAAQ=</HashCode>
+      <FileName>Enums\MainMenu.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
