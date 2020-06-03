@@ -7,27 +7,28 @@ namespace Eventus.WebUI.ViewModels
         public int Id { get; set; }
 
         [Required]
+        [StringLength(30, MinimumLength = 2, ErrorMessage = "Event Name length must be between 2 and 30")]
+        [Display(Name = "Name of event")]
+        public string NameOfEvent { get; set; }
+
+        [Required]
         [StringLength(15, MinimumLength = 8, ErrorMessage = "Number length must be between 8 and 15")]
         [Display(Name = "Government number")]
-        public string GovernmentNumber { get; set; }
+        public string GovernmentNumberOfService { get; set; }
 
         [Required]
-        [StringLength(30, MinimumLength = 2, ErrorMessage = "Model length must be between 2 and 30")]
-        public string Model { get; set; }
+        [StringLength(25, MinimumLength = 3, ErrorMessage = "Description length must be between 3 and 25")]
+        public string Description { get; set; }
 
         [Required]
-        [StringLength(20, MinimumLength = 3, ErrorMessage = "Color length must be between 3 and 20")]
-        public string Color { get; set; }
+        [Range(1, 24, ErrorMessage = "Event duration must be between 1 and 24")]
+        [Display(Name = "Event duration")]
+        public int EventDuration { get; set; }
 
         [Required]
-        [Range(1900, 2100, ErrorMessage = "Year of issue must be between 1900 and 2100")]
-        [Display(Name = "Year of issue")]
-        public int YearOfIssue { get; set; }
-
-        [Required]
-        [StringLength(20, MinimumLength = 6, ErrorMessage = "Registration number length must be between 6 and 20")]
-        [Display(Name = "Registration number")]
-        public string RegistrationNumber { get; set; }
+        [Range(1, 1000, ErrorMessage = "Price of the event must be between 1 and 24")]
+        [Display(Name = "Price of the event")]
+        public int PriceOfTheEvent { get; set; }
 
         [Required]
         [Display(Name = "Is repair")]

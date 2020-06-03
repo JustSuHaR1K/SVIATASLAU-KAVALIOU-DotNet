@@ -14,23 +14,23 @@ namespace Eventus.WebUI.Controllers
 {
     public class EventsController : Controller
     {
-        private readonly IEventService _carService;
+        private readonly IEventService _eventService;
 
         private readonly ILogger<EventsController> _logger;
 
         private readonly IMapper _mapper;
 
-        public EventsController(IEventService carService, ILogger<EventsController> logger, IMapper mapper)
+        public EventsController(IEventService eventService, ILogger<EventsController> logger, IMapper mapper)
         {
-            _carService = carService;
+            _eventService = eventService;
             _logger = logger;
             _mapper = mapper;
         }
 
-        public async Task<ActionResult> Cars()
+        public async Task<ActionResult> Events()
         {
-            var carList = _mapper.Map<IEnumerable<EventViewModel>>(await _carService.GetAll());
-            return View(carList);
+            var eventsList = _mapper.Map<IEnumerable<EventViewModel>>(await _eventService.GetAll());
+            return View(eventsList);
         }
 
         public ActionResult Create()
@@ -44,16 +44,16 @@ namespace Eventus.WebUI.Controllers
         {
             try
             {
-                var car = _mapper.Map<Event>(carViewModel);
-                if (await _carService.UniquenessCheck(car))
+                var eventus = _mapper.Map<Event>(carViewModel);
+                if (await _eventService.UniquenessCheck(eventus))
                 {
-                    await _carService.Add(car);
+                    await _eventService.Add(eventus);
                 }
-                return RedirectToAction(nameof(Cars));
+                return RedirectToAction(nameof(Events));
             }
             catch (Exception exception)
             {
-                _logger.LogError($"Car create error:{exception.Message}");
+                _logger.LogError($"Event create error:{exception.Message}");
                 return View(carViewModel);
             }
         }
@@ -62,26 +62,26 @@ namespace Eventus.WebUI.Controllers
         {
             try
             {
-                var car = await _carService.FindById(id);
-                var carViewModel = _mapper.Map<EventViewModel>(car);
-                return View(carViewModel);
+                var eventus = await _eventService.FindById(id);
+                var eventViewModel = _mapper.Map<EventViewModel>(eventus);
+                return View(eventViewModel);
             }
             catch (ArgumentException exception)
             {
                 _logger.LogError(exception.Message);
-                return RedirectToAction(nameof(Cars));
+                return RedirectToAction(nameof(Events));
             }
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(EventViewModel carViewModel)
+        public async Task<ActionResult> Edit(EventViewModel eventViewModel)
         {
             try
             {
-                var car = _mapper.Map<Event>(carViewModel);
-                await _carService.Update(car);
-                return RedirectToAction(nameof(Cars));
+                var eventus = _mapper.Map<Event>(eventViewModel);
+                await _eventService.Update(eventus);
+                return RedirectToAction(nameof(Events));
             }
             catch (Exception exception)
             {
@@ -94,14 +94,14 @@ namespace Eventus.WebUI.Controllers
         {
             try
             {
-                var car = await _carService.FindById(id);
-                var carViewModel = _mapper.Map<EventViewModel>(car);
-                return View(carViewModel);
+                var eventus = await _eventService.FindById(id);
+                var eventViewModel = _mapper.Map<EventViewModel>(eventus);
+                return View(eventViewModel);
             }
             catch (ArgumentException exception)
             {
                 _logger.LogError(exception.Message);
-                return RedirectToAction(nameof(Cars));
+                return RedirectToAction(nameof(Events));
             }
         }
 
@@ -111,8 +111,8 @@ namespace Eventus.WebUI.Controllers
         {
             try
             {
-                await _carService.Delete(carViewModel.Id);
-                return RedirectToAction(nameof(Cars));
+                await _eventService.Delete(carViewModel.Id);
+                return RedirectToAction(nameof(Events));
             }
             catch (Exception exception)
             {
@@ -123,14 +123,14 @@ namespace Eventus.WebUI.Controllers
 
         public async Task<ActionResult> GetEventOnRework()
         {
-            var carsList = _mapper.Map<IEnumerable<EventViewModel>>(await _carService.GetEventOnRework());
-            return View(carsList);
+            var eventsList = _mapper.Map<IEnumerable<EventViewModel>>(await _eventService.GetEventOnRework());
+            return View(eventsList);
         }
 
-        public async Task<ActionResult> NewCars(int age)
+        public async Task<ActionResult> GetLongEvents(int duration)
         {
-            var carsList = _mapper.Map<IEnumerable<EventViewModel>>(await _carService.GetOldEvents(age));
-            return View(carsList);
+            var eventsList = _mapper.Map<IEnumerable<EventViewModel>>(await _eventService.GetLongEvents(duration));
+            return View(eventsList);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

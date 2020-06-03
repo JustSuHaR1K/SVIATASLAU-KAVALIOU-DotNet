@@ -28,7 +28,7 @@ namespace Eventus.WebUI.Controllers
             _mapper = mapper;
         }
 
-        public async Task<ActionResult> Drivers()
+        public async Task<ActionResult> Masters()
         {
             var driverList = _mapper.Map<IEnumerable<MasterViewModel>>(await _masterService.GetAll());
 
@@ -63,7 +63,7 @@ namespace Eventus.WebUI.Controllers
                 {
                     await _masterService.Add(driver);
                 }
-                return RedirectToAction(nameof(Drivers));
+                return RedirectToAction(nameof(Masters));
             }
             catch (Exception exception)
             {
@@ -76,26 +76,26 @@ namespace Eventus.WebUI.Controllers
         {
             try
             {
-                var driver = await _masterService.FindById(id);
-                var driverViewModel = _mapper.Map<MasterViewModel>(driver);
-                return View(driverViewModel);
+                var master = await _masterService.FindById(id);
+                var masterViewModel = _mapper.Map<MasterViewModel>(master);
+                return View(masterViewModel);
             }
             catch (ArgumentException exception)
             {
                 _logger.LogError(exception.Message);
-                return RedirectToAction(nameof(Drivers));
+                return RedirectToAction(nameof(Masters));
             }
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(MasterViewModel driverViewModel)
+        public async Task<ActionResult> Edit(MasterViewModel masterViewModel)
         {
             try
             {
-                var driver = _mapper.Map<Master>(driverViewModel);
-                await _masterService.Update(driver);
-                return RedirectToAction(nameof(Drivers));
+                var master = _mapper.Map<Master>(masterViewModel);
+                await _masterService.Update(master);
+                return RedirectToAction(nameof(Masters));
             }
             catch (Exception exception)
             {
@@ -108,29 +108,29 @@ namespace Eventus.WebUI.Controllers
         {
             try
             {
-                var driver = await _masterService.FindById(id);
-                var driverViewModel = _mapper.Map<MasterViewModel>(driver);
-                return View(driverViewModel);
+                var master = await _masterService.FindById(id);
+                var masterViewModel = _mapper.Map<MasterViewModel>(master);
+                return View(masterViewModel);
             }
             catch (ArgumentException exception)
             {
                 _logger.LogError(exception.Message);
-                return RedirectToAction(nameof(Drivers));
+                return RedirectToAction(nameof(Masters));
             }
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Delete(MasterViewModel driverViewModel)
+        public async Task<ActionResult> Delete(MasterViewModel masterViewModel)
         {
             try
             {
-                await _masterService.Delete(driverViewModel.Id);
-                return RedirectToAction(nameof(Drivers));
+                await _masterService.Delete(masterViewModel.Id);
+                return RedirectToAction(nameof(Masters));
             }
             catch (Exception exception)
             {
-                _logger.LogError($"Car driver error:{exception.Message}");
+                _logger.LogError($"Event master error:{exception.Message}");
                 return View();
             }
         }
@@ -142,18 +142,18 @@ namespace Eventus.WebUI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> GiveCar(GiveEventViewModel giveCarViewModel)
+        public async Task<ActionResult> GiveEvent(GiveEventViewModel giveEventViewModel)
         {
             try
             {
-                var car = await _eventService.FindByGovernmentNumber(giveCarViewModel.CarGovernmentNumber);
-                var driver = await _masterService.FindByDriverLicenseNumber(giveCarViewModel.DriverLicenseNumber);
-                await _masterService.GiveCar(driver.Id, car.Id);
-                return RedirectToAction(nameof(Drivers));
+                var eventus = await _eventService.FindByGovernmentNumberOfService(giveEventViewModel.CarGovernmentNumber);
+                var master = await _masterService.FindByMasterLicenseNumber(giveEventViewModel.DriverLicenseNumber);
+                await _masterService.GiveEvent(master.Id, eventus.Id);
+                return RedirectToAction(nameof(Masters));
             }
             catch (Exception exception)
             {
-                _logger.LogError($"Give car error:{exception.Message}");
+                _logger.LogError($"Give event error:{exception.Message}");
                 return View();
             }
         }
