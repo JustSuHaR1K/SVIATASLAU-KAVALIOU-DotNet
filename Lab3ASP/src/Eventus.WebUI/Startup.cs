@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Eventus.BusinessLogic.Interfaces;
@@ -15,6 +14,8 @@ using Eventus.DAL.Interfaces;
 using Eventus.DAL.Models;
 using Eventus.WebUI.Mapper;
 using EventusDAL.Repositories;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Eventus.WebUI
 {
@@ -30,18 +31,20 @@ namespace Eventus.WebUI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            
             services.AddControllersWithViews();
+            services.AddRazorPages();
 
             services.AddDbContext<EventContext>(options => options
             .UseSqlServer(Configuration.GetConnectionString("EventConnection"))
             .UseLoggerFactory(EventLoggerFactory(Configuration)));
 
+            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<EventContext>();
+
             services.AddTransient<IRepository<EventDto>, EventRepository<EventDto>>();
             services.AddTransient<IRepository<ClientDto>, EventRepository<ClientDto>>();
             services.AddTransient<IRepository<MasterDto>, EventRepository<MasterDto>>();
             services.AddTransient<IRepository<OrderDto>, EventRepository<OrderDto>>();
-            // services.AddScoped<IEventService, EventService>();
+
             services.AddTransient<IMasterService, MasterService>();
             services.AddTransient<IEventService, EventService>();
             services.AddTransient<IOrderService, OrderService>();
@@ -62,7 +65,7 @@ namespace Eventus.WebUI
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseBrowserLink();
+                //app.UseBrowserLink();
             }
             else
             {
@@ -75,9 +78,14 @@ namespace Eventus.WebUI
 
             app.UseRouting();
 
+            app.UseAuthentication();
+
+            app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute("default", "{controller=Events}/{action=Events}");
+                endpoints.MapRazorPages();
             });
         }
 
