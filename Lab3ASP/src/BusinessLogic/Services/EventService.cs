@@ -37,7 +37,7 @@ namespace Eventus.BusinessLogic.Services
             var master = await _masterRepository.FindById(id);
             if (eventus != null && master != null)
             {
-                master.EventId = null;
+                master.EventusId = null;
                 await _masterRepository.Update(master);
                 await _eventRepository.Remove(eventus);
             }
@@ -66,19 +66,19 @@ namespace Eventus.BusinessLogic.Services
         public async Task<IEnumerable<Event>> GetEventOnRework()
         {
             var events = await _eventRepository.Get();
-            return _mapper.Map<IEnumerable<Event>>(events.Where(e => e.IsRepair));
+            return _mapper.Map<IEnumerable<Event>>(events.Where(e => e.IsRework));
         }
 
-        public async Task<IEnumerable<Event>> GetOldEvents(int age)
+        public async Task<IEnumerable<Event>> GetLongEvents(int duration)
         {
             var events = await _eventRepository.Get();
-            return _mapper.Map<IEnumerable<Event>>(events.Where(e => DateTime.Now.Year - e.YearOfIssue <= age));
+            return _mapper.Map<IEnumerable<Event>>(events.Where(e => e.EventDuration <= duration));
         }
 
-        public async Task<Event> FindByGovernmentNumber(string governmentNumber)
+        public async Task<Event> FindByGovernmentNumberOfService(string governmentNumberOfService)
         {
             var events = await _eventRepository.Get();
-            var eventus = events.FirstOrDefault(e => e.GovernmentNumber.Equals(governmentNumber));
+            var eventus = events.FirstOrDefault(e => e.GovernmentNumberOfService.Equals(governmentNumberOfService));
             return _mapper.Map<Event>(eventus);
         }
 
@@ -87,7 +87,7 @@ namespace Eventus.BusinessLogic.Services
             var events = await _eventRepository.Get();
             try
             {
-                var resultOfFind = events.Single(e => e.GovernmentNumber.Equals(eventus.GovernmentNumber) || e.RegistrationNumber.Equals(eventus.RegistrationNumber));
+                var resultOfFind = events.Single(e => e.GovernmentNumberOfService.Equals(eventus.GovernmentNumberOfService) || e.PriceOfTheEvent.Equals(eventus.PriceOfTheEvent));
                 return false;
             }
             catch (ArgumentNullException)

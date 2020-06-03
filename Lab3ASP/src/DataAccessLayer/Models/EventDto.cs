@@ -17,18 +17,17 @@ namespace Eventus.DAL.Models
         }
 
         public int Id { get; set; }
+        public string NameOfEvent { get; set; }
 
-        public string GovernmentNumber { get; set; }
+        public string GovernmentNumberOfService { get; set; }
 
-        public string Model { get; set; }
+        public string Description { get; set; }
 
-        public string Color { get; set; }
+        public int EventDuration { get; set; }
 
-        public int YearOfIssue { get; set; }
+        public int PriceOfTheEvent { get; set; }
 
-        public string RegistrationNumber { get; set; }
-
-        public bool IsRepair { get; set; }
+        public bool IsRework { get; set; }
 
         private MasterDto master;
 

@@ -24,9 +24,9 @@ namespace Eventus.DAL.Models
 
         public int Id { get; set; }
 
-        public int? EventId { get; set; }
+        public int? EventusId { get; set; }
 
-        public int CallSign { get; set; }
+        public string Profession { get; set; }
 
         public string Surname { get; set; }
 
@@ -36,7 +36,7 @@ namespace Eventus.DAL.Models
 
         public string MasterLicenseNumber { get; set; }
 
-        public DateTime DateOfIssueOfDriversLicense { get; set; }
+        public DateTime DateOfIssueOfAnEntrepreneurialLicense { get; set; }
 
         public bool IsSickLeave { get; set; }
 
@@ -48,7 +48,7 @@ namespace Eventus.DAL.Models
             set => orders = value;
         }
 
-        public EventDto Event
+        public EventDto Eventus
         {
             get => _lazyLoader.Load(this, ref eventus);
             set => eventus = value;
