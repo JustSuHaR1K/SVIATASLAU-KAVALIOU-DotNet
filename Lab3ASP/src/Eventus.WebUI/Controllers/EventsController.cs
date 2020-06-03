@@ -40,11 +40,11 @@ namespace Eventus.WebUI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(EventViewModel carViewModel)
+        public async Task<ActionResult> Create(EventViewModel eventViewModel)
         {
             try
             {
-                var eventus = _mapper.Map<Event>(carViewModel);
+                var eventus = _mapper.Map<Event>(eventViewModel);
                 if (await _eventService.UniquenessCheck(eventus))
                 {
                     await _eventService.Add(eventus);
@@ -54,7 +54,7 @@ namespace Eventus.WebUI.Controllers
             catch (Exception exception)
             {
                 _logger.LogError($"Event create error:{exception.Message}");
-                return View(carViewModel);
+                return View(eventViewModel);
             }
         }
 
@@ -85,7 +85,7 @@ namespace Eventus.WebUI.Controllers
             }
             catch (Exception exception)
             {
-                _logger.LogError($"Car update error:{exception.Message}");
+                _logger.LogError($"Event update error:{exception.Message}");
                 return View();
             }
         }
@@ -116,7 +116,7 @@ namespace Eventus.WebUI.Controllers
             }
             catch (Exception exception)
             {
-                _logger.LogError($"Car delete error:{exception.Message}");
+                _logger.LogError($"Event delete error:{exception.Message}");
                 return View();
             }
         }

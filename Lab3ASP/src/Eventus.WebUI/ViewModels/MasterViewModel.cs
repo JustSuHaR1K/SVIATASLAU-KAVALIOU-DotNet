@@ -10,7 +10,7 @@ namespace Eventus.WebUI.ViewModels
     {
         public int Id { get; set; }
 
-        public int? EventId { get; set; }
+        public int? EventusId { get; set; }
 
         [Required]
         [StringLength(30, MinimumLength = 2, ErrorMessage = "Profession name length must be between 2 and 30")]

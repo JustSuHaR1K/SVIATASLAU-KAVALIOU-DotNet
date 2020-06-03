@@ -34,7 +34,7 @@ namespace Eventus.WebUI
 
             services.AddDbContext<EventContext>(options => options
             .UseSqlServer(Configuration.GetConnectionString("EventConnection"))
-            .UseLoggerFactory(TaxiLoggerFactory(Configuration)));
+            .UseLoggerFactory(EventLoggerFactory(Configuration)));
 
             services.AddTransient<IRepository<EventDto>, EventRepository<EventDto>>();
             services.AddTransient<IRepository<ClientDto>, EventRepository<ClientDto>>();
@@ -64,7 +64,7 @@ namespace Eventus.WebUI
             }
             else
             {
-                app.UseExceptionHandler("/Cars/Error");
+                app.UseExceptionHandler("/Events/Error");
                 
                 app.UseHsts();
             }
@@ -75,11 +75,11 @@ namespace Eventus.WebUI
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute("default", "{controller=Cars}/{action=Cars}");
+                endpoints.MapControllerRoute("default", "{controller=Events}/{action=Events}");
             });
         }
 
-        private ILoggerFactory TaxiLoggerFactory(IConfiguration configuration) => LoggerFactory.Create(builder =>
+        private ILoggerFactory EventLoggerFactory(IConfiguration configuration) => LoggerFactory.Create(builder =>
         {
             builder.AddConfiguration(configuration);
         });

@@ -16,11 +16,11 @@ namespace Eventus.WebUI.Controllers
 
         private readonly IMasterService _masterService;
 
-        private readonly ILogger<EventsController> _logger;
+        private readonly ILogger<MastersController> _logger;
 
         private readonly IMapper _mapper;
 
-        public MastersController(IEventService eventService, IMasterService masterService, ILogger<EventsController> logger, IMapper mapper)
+        public MastersController(IEventService eventService, IMasterService masterService, ILogger<MastersController> logger, IMapper mapper)
         {
             _eventService = eventService;
             _masterService = masterService;
@@ -36,7 +36,7 @@ namespace Eventus.WebUI.Controllers
             {
                 try
                 {
-                    item.Event = _mapper.Map<EventViewModel>(await _eventService.FindById((int)item.EventId));
+                    item.Event = _mapper.Map<EventViewModel>(await _eventService.FindById((int)item.EventusId));
                 }
                 catch (InvalidOperationException exception)
                 {

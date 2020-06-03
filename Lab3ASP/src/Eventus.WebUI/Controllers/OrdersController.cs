@@ -17,11 +17,11 @@ namespace Eventus.WebUI.Controllers
 
         private readonly IOrderService _orderService;
 
-        private readonly ILogger<EventsController> _logger;
+        private readonly ILogger<OrdersController> _logger;
 
         private readonly IMapper _mapper;
 
-        public OrdersController(IMasterService masterService, IOrderService orderService, ILogger<EventsController> logger, IMapper mapper)
+        public OrdersController(IMasterService masterService, IOrderService orderService, ILogger<OrdersController> logger, IMapper mapper)
         {
             _masterService = masterService;
             _orderService = orderService;
@@ -124,7 +124,7 @@ namespace Eventus.WebUI.Controllers
             }
             catch (Exception exception)
             {
-                _logger.LogError($"Car driver error:{exception.Message}");
+                _logger.LogError($"Event master error:{exception.Message}");
                 return View();
             }
         }
