@@ -4,15 +4,15 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Eventus.DAL.Interfaces;
 
-namespace Eventus.DAL.Repositories
+namespace EventusDAL.Repositories
 {
     public class EventRepository<TEntity> : IRepository<TEntity> where TEntity : class, IEntity
     {
-        private DbContext _context;
+        private readonly EventContext _context;
 
         private readonly DbSet<TEntity> _dbSet;
 
-        public EventRepository(DbContext context)
+        public EventRepository(EventContext context)
         {
             _context = context;
             _dbSet = context.Set<TEntity>();
@@ -52,22 +52,6 @@ namespace Eventus.DAL.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                if (_context != null)
-                {
-                    _context.Dispose();
-                    _context = null;
-                }
-            }
-        }
+        
     }
 }

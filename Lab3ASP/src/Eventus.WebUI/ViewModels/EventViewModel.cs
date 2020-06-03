@@ -31,7 +31,7 @@ namespace Eventus.WebUI.ViewModels
         public int PriceOfTheEvent { get; set; }
 
         [Required]
-        [Display(Name = "Is repair")]
-        public bool IsRepair { get; set; }
+        [Display(Name = "Is rework")]
+        public bool IsRework { get; set; }
     }
 }

@@ -14,7 +14,7 @@ using Eventus.BusinessLogic.Services;
 using Eventus.DAL.Interfaces;
 using Eventus.DAL.Models;
 using Eventus.WebUI.Mapper;
-using Eventus.DAL.Repositories;
+using EventusDAL.Repositories;
 
 namespace Eventus.WebUI
 {
@@ -30,6 +30,7 @@ namespace Eventus.WebUI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
             services.AddControllersWithViews();
 
             services.AddDbContext<EventContext>(options => options
@@ -40,9 +41,9 @@ namespace Eventus.WebUI
             services.AddTransient<IRepository<ClientDto>, EventRepository<ClientDto>>();
             services.AddTransient<IRepository<MasterDto>, EventRepository<MasterDto>>();
             services.AddTransient<IRepository<OrderDto>, EventRepository<OrderDto>>();
-
-            services.AddTransient<IEventService, EventService>();
+            // services.AddScoped<IEventService, EventService>();
             services.AddTransient<IMasterService, MasterService>();
+            services.AddTransient<IEventService, EventService>();
             services.AddTransient<IOrderService, OrderService>();
 
             services.AddTransient<EventProfile>();
@@ -61,6 +62,7 @@ namespace Eventus.WebUI
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseBrowserLink();
             }
             else
             {

@@ -44,10 +44,10 @@ namespace Eventus.WebUI.Controllers
         {
             try
             {
-                var eventus = _mapper.Map<Event>(eventViewModel);
-                if (await _eventService.UniquenessCheck(eventus))
+                var @event = _mapper.Map<Event>(eventViewModel);
+                if (await _eventService.UniquenessCheck(@event))
                 {
-                    await _eventService.Add(eventus);
+                    await _eventService.Add(@event);
                 }
                 return RedirectToAction(nameof(Events));
             }
@@ -107,11 +107,11 @@ namespace Eventus.WebUI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Delete(EventViewModel carViewModel)
+        public async Task<ActionResult> Delete(EventViewModel eventViewModel)
         {
             try
             {
-                await _eventService.Delete(carViewModel.Id);
+                await _eventService.Delete(eventViewModel.Id);
                 return RedirectToAction(nameof(Events));
             }
             catch (Exception exception)
@@ -121,15 +121,15 @@ namespace Eventus.WebUI.Controllers
             }
         }
 
-        public async Task<ActionResult> GetEventOnRework()
+        public async Task<ActionResult> EventsOnRework()
         {
-            var eventsList = _mapper.Map<IEnumerable<EventViewModel>>(await _eventService.GetEventOnRework());
+            var eventsList = _mapper.Map<IEnumerable<EventViewModel>>(await _eventService.EventsOnRework());
             return View(eventsList);
         }
 
-        public async Task<ActionResult> GetLongEvents(int duration)
+        public async Task<ActionResult> LongEvents(int duration)
         {
-            var eventsList = _mapper.Map<IEnumerable<EventViewModel>>(await _eventService.GetLongEvents(duration));
+            var eventsList = _mapper.Map<IEnumerable<EventViewModel>>(await _eventService.LongEvents(duration));
             return View(eventsList);
         }
 

@@ -2,14 +2,19 @@
 
 @{
     ViewData["Title"] = "Events";
-    Layout = "~/Views/_ViewImports.cshtml";
 }
 
 <h1>Events</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
+    <a asp-action="EventsOnRework">Events on rework</a>
 </p>
+<form asp-action="LongEvents">
+    Duration
+    <input type="number" name="duration" />
+    <input type="submit" value="LongEvents" />
+</form>
 <table class="table">
     <thead>
         <tr>
@@ -32,41 +37,42 @@
                 @Html.DisplayNameFor(model => model.PriceOfTheEvent)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IsRepair)
+                @Html.DisplayNameFor(model => model.IsRework)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NameOfEvent)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GovernmentNumberOfService)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EventDuration)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PriceOfTheEvent)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsRepair)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameOfEvent)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GovernmentNumberOfService)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventDuration)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PriceOfTheEvent)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsRework)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

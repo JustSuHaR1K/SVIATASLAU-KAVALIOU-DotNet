@@ -6,9 +6,9 @@ namespace Eventus.BusinessLogic.Interfaces
 {
     public interface IEventService : IManager<Event>
     {
-        Task<IEnumerable<Event>> GetEventOnRework();
+        Task<IEnumerable<Event>> EventsOnRework();
 
-        Task<IEnumerable<Event>> GetLongEvents(int duration);
+        Task<IEnumerable<Event>> LongEvents(int duration);
 
         Task<Event> FindByGovernmentNumberOfService(string governmentNumberOfService);
 

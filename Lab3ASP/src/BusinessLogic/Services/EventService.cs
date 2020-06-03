@@ -63,13 +63,13 @@ namespace Eventus.BusinessLogic.Services
             return _mapper.Map<IEnumerable<Event>>(await _eventRepository.Get());
         }
 
-        public async Task<IEnumerable<Event>> GetEventOnRework()
+        public async Task<IEnumerable<Event>> EventsOnRework()
         {
             var events = await _eventRepository.Get();
             return _mapper.Map<IEnumerable<Event>>(events.Where(e => e.IsRework));
         }
 
-        public async Task<IEnumerable<Event>> GetLongEvents(int duration)
+        public async Task<IEnumerable<Event>> LongEvents(int duration)
         {
             var events = await _eventRepository.Get();
             return _mapper.Map<IEnumerable<Event>>(events.Where(e => e.EventDuration <= duration));

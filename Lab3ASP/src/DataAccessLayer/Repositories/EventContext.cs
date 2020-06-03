@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Eventus.DAL.Models;
 
-namespace Eventus.DAL.Repositories
+namespace EventusDAL.Repositories
 {
     public class EventContext : DbContext
     {

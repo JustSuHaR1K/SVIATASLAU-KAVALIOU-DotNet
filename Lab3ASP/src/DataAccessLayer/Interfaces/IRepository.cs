@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Eventus.DAL.Interfaces
 {
-    public interface IRepository<TEntity> : IDisposable where TEntity : class, IEntity
+    public interface IRepository<TEntity> where TEntity : class, IEntity
     {
         Task Create(TEntity item);
 

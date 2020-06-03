@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Eventus.WebUI.ViewModels.EventViewModel>
+
+@{
+    ViewData["Title"] = "LongEvents";
+}
+
+<h1>LongEvents</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NameOfEvent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GovernmentNumberOfService)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventDuration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PriceOfTheEvent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsRework)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td asp-display-for="@item.NameOfEvent"></td>
+                <td asp-display-for="@item.GovernmentNumberOfService"></td>
+                <td asp-display-for="@item.Description"></td>
+                <td asp-display-for="@item.EventDuration"></td>
+                <td asp-display-for="@item.PriceOfTheEvent"></td>
+                <td asp-display-for="@item.IsRework"></td>
+            </tr>
+        }
+    </tbody>
+</table>
+    <div>
+        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+        <a asp-action="Events">Back to List</a>
+    </div>
