@@ -5,11 +5,11 @@ namespace Eventus.WebUI.ViewModels
     public class GiveEventViewModel
     {
         [Required]
-        [Display(Name = "Driver license number")]
-        public string DriverLicenseNumber { get; set; }
+        [Display(Name = "Master license number")]
+        public string MasterLicenseNumber { get; set; }
 
         [Required]
-        [Display(Name = "Car government number")]
-        public string CarGovernmentNumber { get; set; }
+        [Display(Name = "Event government number")]
+        public string EventGovernmentNumber { get; set; }
     }
 }

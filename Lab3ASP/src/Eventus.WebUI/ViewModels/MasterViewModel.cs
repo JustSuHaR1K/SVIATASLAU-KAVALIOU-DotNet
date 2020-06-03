@@ -10,12 +10,12 @@ namespace Eventus.WebUI.ViewModels
     {
         public int Id { get; set; }
 
-        public int? CarId { get; set; }
+        public int? EventId { get; set; }
 
         [Required]
-        [Range(1, 1000, ErrorMessage = "Call sing must be between 1 and 1000")]
-        [Display(Name = "Call sign")]
-        public int CallSign { get; set; }
+        [StringLength(30, MinimumLength = 2, ErrorMessage = "Profession name length must be between 2 and 30")]
+        [Display(Name = "Profession")]
+        public string Profession { get; set; }
 
         [Required]
         [StringLength(30, MinimumLength = 2, ErrorMessage = "Surname length must be between 2 and 30")]
@@ -30,13 +30,13 @@ namespace Eventus.WebUI.ViewModels
         public string Patronymic { get; set; }
 
         [Required]
-        [StringLength(30, MinimumLength = 5, ErrorMessage = "Driver license number must be between 5 and 30")]
-        [Display(Name = "Driver license number")]
-        public string DriverLicenseNumber { get; set; }
+        [StringLength(30, MinimumLength = 5, ErrorMessage = "Master license number must be between 5 and 30")]
+        [Display(Name = "Master license number")]
+        public string MasterLicenseNumber { get; set; }
 
         [Required]
-        [Display(Name = "Date of issue of drivers license")]
-        public DateTime DateOfIssueOfDriversLicense { get; set; }
+        [Display(Name = "Date of issue of an entrepreneurial license")]
+        public DateTime DateOfIssueOfAnEntrepreneurialLicense { get; set; }
 
         [Required]
         [Display(Name = "Is sick leave")]
@@ -46,6 +46,6 @@ namespace Eventus.WebUI.ViewModels
         [Display(Name = "Is on holiday")]
         public bool IsOnHoliday { get; set; }
 
-        public EventViewModel Car { get; set; }
+        public EventViewModel Event { get; set; }
     }
 }

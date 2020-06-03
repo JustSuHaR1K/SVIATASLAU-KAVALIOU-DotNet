@@ -37,7 +37,7 @@ namespace Eventus.WebUI.Controllers
             {
                 try
                 {
-                    item.Driver = _mapper.Map<MasterViewModel>(await _masterService.FindById((int)item.DriverId));
+                    item.Master = _mapper.Map<MasterViewModel>(await _masterService.FindById((int)item.MasterId));
                 }
                 catch (InvalidOperationException exception)
                 {

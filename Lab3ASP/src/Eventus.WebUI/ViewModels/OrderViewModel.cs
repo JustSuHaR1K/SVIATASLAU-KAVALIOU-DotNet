@@ -26,11 +26,11 @@ namespace Eventus.WebUI.ViewModels
         [Range(0, double.MaxValue / 2, ErrorMessage = "Minimum discount = 0.0")]
         public double Discount { get; set; }
 
-        public int? DriverId { get; set; }
+        public int? MasterId { get; set; }
 
         public int ClientId { get; set; }
 
-        public MasterViewModel Driver { get; set; }
+        public MasterViewModel Master { get; set; }
 
         public ClientViewModel Client { get; set; }
     }

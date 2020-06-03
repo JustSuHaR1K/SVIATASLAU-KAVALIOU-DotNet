@@ -30,21 +30,21 @@ namespace Eventus.WebUI.Controllers
 
         public async Task<ActionResult> Masters()
         {
-            var driverList = _mapper.Map<IEnumerable<MasterViewModel>>(await _masterService.GetAll());
+            var masterList = _mapper.Map<IEnumerable<MasterViewModel>>(await _masterService.GetAll());
 
-            foreach (var item in driverList)
+            foreach (var item in masterList)
             {
                 try
                 {
-                    item.Car = _mapper.Map<EventViewModel>(await _eventService.FindById((int)item.CarId));
+                    item.Event = _mapper.Map<EventViewModel>(await _eventService.FindById((int)item.EventId));
                 }
                 catch (InvalidOperationException exception)
                 {
-                    _logger.LogError($"Find car error:{exception.Message}");
+                    _logger.LogError($"Find event error:{exception.Message}");
                 }
             }
 
-            return View(driverList);
+            return View(masterList);
         }
 
         public ActionResult Create()
@@ -54,21 +54,21 @@ namespace Eventus.WebUI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(MasterViewModel driverViewModel)
+        public async Task<ActionResult> Create(MasterViewModel masterViewModel)
         {
             try
             {
-                var driver = _mapper.Map<Master>(driverViewModel);
-                if (await _masterService.UniquenessCheck(driver))
+                var master = _mapper.Map<Master>(masterViewModel);
+                if (await _masterService.UniquenessCheck(master))
                 {
-                    await _masterService.Add(driver);
+                    await _masterService.Add(master);
                 }
                 return RedirectToAction(nameof(Masters));
             }
             catch (Exception exception)
             {
-                _logger.LogError($"Driver create error:{exception.Message}");
-                return View(driverViewModel);
+                _logger.LogError($"Master create error:{exception.Message}");
+                return View(masterViewModel);
             }
         }
 
@@ -99,7 +99,7 @@ namespace Eventus.WebUI.Controllers
             }
             catch (Exception exception)
             {
-                _logger.LogError($"Driver update error:{exception.Message}");
+                _logger.LogError($"Master update error:{exception.Message}");
                 return View();
             }
         }
@@ -135,7 +135,7 @@ namespace Eventus.WebUI.Controllers
             }
         }
 
-        public ActionResult GiveCar()
+        public ActionResult GiveEvent()
         {
             return View();
         }
@@ -146,8 +146,8 @@ namespace Eventus.WebUI.Controllers
         {
             try
             {
-                var eventus = await _eventService.FindByGovernmentNumberOfService(giveEventViewModel.CarGovernmentNumber);
-                var master = await _masterService.FindByMasterLicenseNumber(giveEventViewModel.DriverLicenseNumber);
+                var eventus = await _eventService.FindByGovernmentNumberOfService(giveEventViewModel.EventGovernmentNumber);
+                var master = await _masterService.FindByMasterLicenseNumber(giveEventViewModel.MasterLicenseNumber);
                 await _masterService.GiveEvent(master.Id, eventus.Id);
                 return RedirectToAction(nameof(Masters));
             }
