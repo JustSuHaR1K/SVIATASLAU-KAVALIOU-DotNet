@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Taxi.WebUI.ViewModels.DriverViewModel>
+
+@{
+    ViewData["Title"] = "All drivers";
+}
+
+<h1>Drivers and their car</h1>
+
+<p>
+    <a asp-action="Create">Create new</a>
+    <a asp-action="GiveCar">Give car</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CallSign)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Surname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Patronymic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DriverLicenseNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfIssueOfDriversLicense)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsSickLeave)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsOnHoliday)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Car.GovernmentNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Car.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Car.YearOfIssue)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td asp-display-for="@item.CallSign"></td>
+                <td asp-display-for="@item.Surname"></td>
+                <td asp-display-for="@item.Name"></td>
+                <td asp-display-for="@item.Patronymic"></td>
+                <td asp-display-for="@item.DriverLicenseNumber"></td>
+                <td asp-display-for="@item.DateOfIssueOfDriversLicense"></td>
+                <td asp-display-for="@item.IsSickLeave"></td>
+                <td asp-display-for="@item.IsOnHoliday"></td>
+                <td asp-display-for="@item.Car.GovernmentNumber"></td>
+                <td asp-display-for="@item.Car.Model"></td>
+                <td asp-display-for="@item.Car.YearOfIssue"></td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>|
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

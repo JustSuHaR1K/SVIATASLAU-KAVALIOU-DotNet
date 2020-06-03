@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Taxi.WebUI.ViewModels.CarViewModel>
+
+@{
+    ViewData["Title"] = "All cars";
+}
+
+<h1>Cars</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+    <a asp-action="CarsOnRepair">Cars on repair</a>
+</p>
+<form asp-action="NewCars">
+    Age
+    <input type="number" name="age" />
+    <input type="submit" value="New cars" />
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.GovernmentNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Color)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YearOfIssue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RegistrationNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsRepair)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td asp-display-for="@item.GovernmentNumber"></td>
+            <td asp-display-for="@item.Model"></td>
+            <td asp-display-for="@item.Color"></td>
+            <td asp-display-for="@item.YearOfIssue"></td>
+            <td asp-display-for="@item.RegistrationNumber"></td>
+            <td asp-display-for="@item.IsRepair"></td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>|
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>|
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

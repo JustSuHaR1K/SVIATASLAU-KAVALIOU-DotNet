@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Taxi.WebUI.ViewModels.OrderViewModel>
+
+@{
+    ViewData["Title"] = "Active orders";
+}
+
+<h1>Get active orders</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsDone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Distance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Discount)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td asp-display-for="@item.Date"></td>
+                <td asp-display-for="@item.IsDone"></td>
+                <td asp-display-for="@item.Cost"></td>
+                <td asp-display-for="@item.Distance"></td>
+                <td asp-display-for="@item.Discount"></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-action="Orders">Back to List</a>

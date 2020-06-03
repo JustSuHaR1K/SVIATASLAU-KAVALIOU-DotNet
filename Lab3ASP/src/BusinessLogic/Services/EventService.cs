@@ -25,7 +25,7 @@ namespace Eventus.BusinessLogic.Services
             _mapper = mapper;
         }
 
-        public async Task Add(global::BusinessLogic.Models.Event master)
+        public async Task Add(Event master)
         {
             var newEvent = _mapper.Map<EventDto>(master);
             await _eventRepository.Create(newEvent);
@@ -47,42 +47,42 @@ namespace Eventus.BusinessLogic.Services
             }
         }
 
-        public async Task<global::BusinessLogic.Models.Event> FindById(int id)
+        public async Task<Event> FindById(int id)
         {
-            return _mapper.Map<global::BusinessLogic.Models.Event>(await _eventRepository.FindById(id));
+            return _mapper.Map<Event>(await _eventRepository.FindById(id));
         }
 
-        public async Task Update(global::BusinessLogic.Models.Event master)
+        public async Task Update(Event master)
         {
             var newEvent = _mapper.Map<EventDto>(master);
             await _eventRepository.Update(newEvent);
         }
 
-        public async Task<IEnumerable<global::BusinessLogic.Models.Event>> GetAll()
+        public async Task<IEnumerable<Event>> GetAll()
         {
-            return _mapper.Map<IEnumerable<global::BusinessLogic.Models.Event>>(await _eventRepository.Get());
+            return _mapper.Map<IEnumerable<Event>>(await _eventRepository.Get());
         }
 
-        public async Task<IEnumerable<global::BusinessLogic.Models.Event>> GetEventOnRework()
+        public async Task<IEnumerable<Event>> GetEventOnRework()
         {
             var events = await _eventRepository.Get();
             return _mapper.Map<IEnumerable<Event>>(events.Where(e => e.IsRepair));
         }
 
-        public async Task<IEnumerable<global::BusinessLogic.Models.Event>> GetOldEvents(int age)
+        public async Task<IEnumerable<Event>> GetOldEvents(int age)
         {
             var events = await _eventRepository.Get();
             return _mapper.Map<IEnumerable<Event>>(events.Where(e => DateTime.Now.Year - e.YearOfIssue <= age));
         }
 
-        public async Task<global::BusinessLogic.Models.Event> FindByGovernmentNumber(string governmentNumber)
+        public async Task<Event> FindByGovernmentNumber(string governmentNumber)
         {
             var events = await _eventRepository.Get();
             var eventus = events.FirstOrDefault(e => e.GovernmentNumber.Equals(governmentNumber));
-            return _mapper.Map<global::BusinessLogic.Models.Event>(eventus);
+            return _mapper.Map<Event>(eventus);
         }
 
-        public async Task<bool> UniquenessCheck(global::BusinessLogic.Models.Event eventus)
+        public async Task<bool> UniquenessCheck(Event eventus)
         {
             var events = await _eventRepository.Get();
             try
