@@ -4,20 +4,15 @@
     ViewData["Title"] = "Masters";
 }
 
-<h1>Masters</h1>
+<<h1>Masters and their event</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Create new</a>
+    <a asp-action="GiveEvent">Give event</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EventusId)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Profession)
             </th>
@@ -42,48 +37,37 @@
             <th>
                 @Html.DisplayNameFor(model => model.IsOnHoliday)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Event.CodeNumberOfService)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Event.NameOfEvent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Event.PriceOfTheEvent)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EventusId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Profession)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Surname)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Patronymic)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MasterLicenseNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateOfIssueOfAnEntrepreneurialLicense)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsSickLeave)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsOnHoliday)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+<tr>
+    <td asp-display-for="@item.Profession"></td>
+    <td asp-display-for="@item.Surname"></td>
+    <td asp-display-for="@item.Name"></td>
+    <td asp-display-for="@item.Patronymic"></td>
+    <td asp-display-for="@item.MasterLicenseNumber"></td>
+    <td asp-display-for="@item.DateOfIssueOfAnEntrepreneurialLicense"></td>
+    <td asp-display-for="@item.IsSickLeave"></td>
+    <td asp-display-for="@item.IsOnHoliday"></td>
+    <td asp-display-for="@item.Event.CodeNumberOfService"></td>
+    <td asp-display-for="@item.Event.NameOfEvent"></td>
+    <td asp-display-for="@item.Event.PriceOfTheEvent"></td>
+    <td>
+        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>|
+        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+    </td>
+</tr>}
     </tbody>
 </table>

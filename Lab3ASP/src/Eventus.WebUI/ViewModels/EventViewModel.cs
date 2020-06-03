@@ -14,7 +14,7 @@ namespace Eventus.WebUI.ViewModels
         [Required]
         [StringLength(15, MinimumLength = 8, ErrorMessage = "Number length must be between 8 and 15")]
         [Display(Name = "Government number")]
-        public string GovernmentNumberOfService { get; set; }
+        public string CodeNumberOfService { get; set; }
 
         [Required]
         [StringLength(25, MinimumLength = 3, ErrorMessage = "Description length must be between 3 and 25")]

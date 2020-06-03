@@ -9,7 +9,7 @@ namespace Eventus.WebUI.ViewModels
         public string MasterLicenseNumber { get; set; }
 
         [Required]
-        [Display(Name = "Event government number")]
-        public string EventGovernmentNumber { get; set; }
+        [Display(Name = "Event code number")]
+        public string EventCodeNumber { get; set; }
     }
 }

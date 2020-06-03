@@ -78,7 +78,7 @@ namespace Eventus.BusinessLogic.Services
         public async Task<Event> FindByGovernmentNumberOfService(string governmentNumberOfService)
         {
             var events = await _eventRepository.Get();
-            var eventus = events.FirstOrDefault(e => e.GovernmentNumberOfService.Equals(governmentNumberOfService));
+            var eventus = events.FirstOrDefault(e => e.CodeNumberOfService.Equals(governmentNumberOfService));
             return _mapper.Map<Event>(eventus);
         }
 
@@ -87,7 +87,7 @@ namespace Eventus.BusinessLogic.Services
             var events = await _eventRepository.Get();
             try
             {
-                var resultOfFind = events.Single(e => e.GovernmentNumberOfService.Equals(eventus.GovernmentNumberOfService) || e.PriceOfTheEvent.Equals(eventus.PriceOfTheEvent));
+                var resultOfFind = events.Single(e => e.CodeNumberOfService.Equals(eventus.CodeNumberOfService) || e.PriceOfTheEvent.Equals(eventus.PriceOfTheEvent));
                 return false;
             }
             catch (ArgumentNullException)

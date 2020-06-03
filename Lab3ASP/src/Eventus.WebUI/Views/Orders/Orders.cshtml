@@ -4,17 +4,15 @@
     ViewData["Title"] = "Orders";
 }
 
-<h1>Orders</h1>
+<h1>Orders and master profession</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="ActiveOrders">Active orders</a>
+    <a asp-action="InActiveOrders">In active orders</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Date)
             </th>
@@ -30,48 +28,22 @@
             <th>
                 @Html.DisplayNameFor(model => model.Discount)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MasterId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ClientId)
-            </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsDone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cost)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Distance)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Discount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MasterId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ClientId)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+<tr>
+    <td asp-display-for="@item.Date"></td>
+    <td asp-display-for="@item.IsDone"></td>
+    <td asp-display-for="@item.Cost"></td>
+    <td asp-display-for="@item.Distance"></td>
+    <td asp-display-for="@item.Discount"></td>
+    <td asp-display-for="@item.Master.Profession"></td>
+    <td>
+        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>|
+        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>|
+    </td>
+</tr>}
     </tbody>
 </table>

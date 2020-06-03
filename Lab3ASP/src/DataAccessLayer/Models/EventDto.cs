@@ -19,7 +19,7 @@ namespace Eventus.DAL.Models
         public int Id { get; set; }
         public string NameOfEvent { get; set; }
 
-        public string GovernmentNumberOfService { get; set; }
+        public string CodeNumberOfService { get; set; }
 
         public string Description { get; set; }
 

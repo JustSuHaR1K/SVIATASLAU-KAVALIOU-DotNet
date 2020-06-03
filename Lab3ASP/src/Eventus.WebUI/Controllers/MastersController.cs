@@ -146,7 +146,7 @@ namespace Eventus.WebUI.Controllers
         {
             try
             {
-                var eventus = await _eventService.FindByGovernmentNumberOfService(giveEventViewModel.EventGovernmentNumber);
+                var eventus = await _eventService.FindByGovernmentNumberOfService(giveEventViewModel.EventCodeNumber);
                 var master = await _masterService.FindByMasterLicenseNumber(giveEventViewModel.MasterLicenseNumber);
                 await _masterService.GiveEvent(master.Id, eventus.Id);
                 return RedirectToAction(nameof(Masters));

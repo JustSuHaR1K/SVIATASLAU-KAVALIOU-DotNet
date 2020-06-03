@@ -25,7 +25,7 @@
                 @Html.DisplayNameFor(model => model.NameOfEvent)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.GovernmentNumberOfService)
+                @Html.DisplayNameFor(model => model.CodeNumberOfService)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Description)
@@ -46,33 +46,18 @@
         @foreach (var item in Model)
         {
             <tr>
+                <td asp-display-for="@item.Id"></td>
+                <td asp-display-for="@item.NameOfEvent"></td>
+                <td asp-display-for="@item.CodeNumberOfService"></td>
+                <td asp-display-for="@item.Description"></td>
+                <td asp-display-for="@item.EventDuration"></td>
+                <td asp-display-for="@item.PriceOfTheEvent"></td>
+                <td asp-display-for="@item.IsRework"></td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NameOfEvent)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.GovernmentNumberOfService)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EventDuration)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PriceOfTheEvent)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsRework)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>|
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>
-        }
+}
     </tbody>
 </table>
