@@ -4,14 +4,14 @@ using System.Threading.Tasks;
 
 namespace Eventus.BusinessLogic.Interfaces
 {
-    public interface IEventService : IManager<global::BusinessLogic.Models.Event>
+    public interface IEventService : IManager<Event>
     {
-        Task<IEnumerable<global::BusinessLogic.Models.Event>> GetEventOnRework();
+        Task<IEnumerable<Event>> GetEventOnRework();
 
-        Task<IEnumerable<global::BusinessLogic.Models.Event>> GetOldEvents(int age);
+        Task<IEnumerable<Event>> GetLongEvents(int duration);
 
-        Task<global::BusinessLogic.Models.Event> FindByGovernmentNumber(string governmentNumber);
+        Task<Event> FindByGovernmentNumberOfService(string governmentNumberOfService);
 
-        Task<bool> UniquenessCheck(global::BusinessLogic.Models.Event car);
+        Task<bool> UniquenessCheck(Event eventus);
     }
 }

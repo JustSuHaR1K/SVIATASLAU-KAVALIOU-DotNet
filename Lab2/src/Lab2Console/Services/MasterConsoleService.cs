@@ -18,15 +18,15 @@ namespace Eventus.ConsoleUI.Services
     {
         private readonly IMasterService _masterProcessing;
 
-        private readonly IEventService _carProcessing;
+        private readonly IEventService _eventProcessing;
 
         private readonly ILogger _logger;
 
-        public MasterConsoleService(IMasterService masterProcessing, IEventService carProcessing)
+        public MasterConsoleService(IMasterService masterProcessing, IEventService eventProcessing)
         {
             _logger = LogManager.GetCurrentClassLogger();
             _masterProcessing = masterProcessing;
-            _carProcessing = carProcessing;
+            _eventProcessing = eventProcessing;
         }
 
         public void PrintMenu()
@@ -50,13 +50,13 @@ namespace Eventus.ConsoleUI.Services
                 int.TryParse(Console.ReadLine(), out int menuNumber);
                 switch (menuNumber)
                 {
-                    case (int)AdminsMasterMenu.AllDriver:
+                    case (int)AdminsMasterMenu.AllMaster:
                         {
-                            ShowDrivers(await _masterProcessing.GetAll());
+                            ShowMasters(await _masterProcessing.GetAll());
                         }
                         break;
 
-                    case (int)AdminsMasterMenu.AddDriver:
+                    case (int)AdminsMasterMenu.AddMaster:
                         {
                             var master = CreateMaster();
                             var validResults = master.IsValid();
@@ -84,7 +84,7 @@ namespace Eventus.ConsoleUI.Services
                         }
                         break;
 
-                    case (int)AdminsMasterMenu.DeleteDriver:
+                    case (int)AdminsMasterMenu.DeleteMaster:
                         {
                             Console.WriteLine("Enter master id");
 
@@ -108,7 +108,7 @@ namespace Eventus.ConsoleUI.Services
                         }
                         break;
 
-                    case (int)AdminsMasterMenu.UpdateDriver:
+                    case (int)AdminsMasterMenu.UpdateMaster:
                         {
                         }
                         break;
@@ -117,26 +117,26 @@ namespace Eventus.ConsoleUI.Services
                         {
                             Console.Clear();
                             Console.WriteLine("Enter licence number:");
-                            var master = await _masterProcessing.FindByDriverLicenseNumber(Console.ReadLine());
+                            var master = await _masterProcessing.FindByMasterLicenseNumber(Console.ReadLine());
                             if (master == null)
                             {
                                 Console.WriteLine("Licence number not find");
                             }
                             else
                             {
-                                Console.WriteLine($"Surname | Name | Patronymic | Call sign | MasterLicenseNumber | Date of issue of drivers license | Is on holiday | Is sick leave");
-                                Console.WriteLine($"{master.Surname} | {master.Name} | {master.Patronymic} | {master.CallSign} | {master.MasterLicenseNumber} | {master.DateOfIssueOfDriversLicense} | {master.IsOnHoliday} | {master.IsSickLeave}");
+                                Console.WriteLine($"Surname | Name | Patronymic | Profession | MasterLicenseNumber | Date of issue an entrepreneurial license | Is on holiday | Is sick leave");
+                                Console.WriteLine($"{master.Surname} | {master.Name} | {master.Patronymic} | {master.Profession} | {master.MasterLicenseNumber} | {master.DateOfIssueOfAnEntrepreneurialLicense} | {master.IsOnHoliday} | {master.IsSickLeave}");
                             }
                             Console.ReadKey();
                         }
                         break;
 
-                    case (int)AdminsMasterMenu.GiveCar:
+                    case (int)AdminsMasterMenu.GiveEvent:
                         {
                             Console.Clear();
                             Console.WriteLine("Enter event id");
                             var eventId = ConsoleHelper.EnterNumber();
-                            if (await _carProcessing.FindById(eventId) != null)
+                            if (await _eventProcessing.FindById(eventId) != null)
                             {
                                 Console.WriteLine("Enter master id");
                                 var masterId = ConsoleHelper.EnterNumber();
@@ -144,13 +144,13 @@ namespace Eventus.ConsoleUI.Services
                                 {
                                     try
                                     {
-                                        await _masterProcessing.GiveCar(masterId, eventId);
+                                        await _masterProcessing.GiveEvent(masterId, eventId);
                                         Console.WriteLine("Sucessfull");
                                     }
                                     catch (DbUpdateException exception)
                                     {
                                         _logger.Error($"Update error:{exception.Message}");
-                                        Console.WriteLine("This car is use");
+                                        Console.WriteLine("This event is use");
                                     }
                                     catch (Exception)
                                     {
@@ -184,13 +184,13 @@ namespace Eventus.ConsoleUI.Services
             }
         }
 
-        public static void ShowDrivers(IEnumerable<Master> masters)
+        public static void ShowMasters(IEnumerable<Master> masters)
         {
             Console.Clear();
-            Console.WriteLine($"Surname | Name | Patronymic | Call sign | MasterLicenseNumber | Date of issue of drivers license | Is on holiday | Is sick leave");
+            Console.WriteLine($"Surname | Name | Patronymic | Profession | MasterLicenseNumber | Date of issue an entrepreneurial license | Is on holiday | Is sick leave");
             foreach (var master in masters)
             {
-                Console.WriteLine($"{master.Surname} | {master.Name} | {master.Patronymic} | {master.CallSign} | {master.MasterLicenseNumber} | {master.DateOfIssueOfDriversLicense} | {master.IsOnHoliday} | {master.IsSickLeave}");
+                Console.WriteLine($"{master.Surname} | {master.Name} | {master.Patronymic} | {master.Profession} | {master.MasterLicenseNumber} | {master.DateOfIssueOfAnEntrepreneurialLicense} | {master.IsOnHoliday} | {master.IsSickLeave}");
             }
             Console.ReadKey();
         }
@@ -204,12 +204,12 @@ namespace Eventus.ConsoleUI.Services
             string surname = Console.ReadLine();
             Console.WriteLine("Enter patronymic:");
             string patronymic = Console.ReadLine();
-            Console.WriteLine("Enter driver license number:");
+            Console.WriteLine("Enter master license number:");
             string masterLicenseNumber = Console.ReadLine();
-            Console.WriteLine("Enter date of issue of drivers license:");
-            DateTime.TryParse(Console.ReadLine(), out DateTime dateOfIssueOfDriversLicense);
-            Console.WriteLine("Enter call sign:");
-            int callSign = ConsoleHelper.EnterNumber();
+            Console.WriteLine("Enter date of issue of an entrepreneurial license:");
+            DateTime.TryParse(Console.ReadLine(), out DateTime dateOfIssueOfAnEntrepreneurialLicense);
+            Console.WriteLine("Enter profession:");
+            string profession = Console.ReadLine();
             Console.WriteLine("Enter the state of holiday (on holiday 1, otherwise 0)");
             string state = Console.ReadLine();
             bool isOnHoliday;
@@ -236,12 +236,12 @@ namespace Eventus.ConsoleUI.Services
 
             var master = new Master()
             {
-                CallSign = callSign,
+                Profession = profession,
                 Surname = surname,
                 Name = name,
                 Patronymic = patronymic,
                 MasterLicenseNumber = masterLicenseNumber,
-                DateOfIssueOfDriversLicense = dateOfIssueOfDriversLicense,
+                DateOfIssueOfAnEntrepreneurialLicense = dateOfIssueOfAnEntrepreneurialLicense,
                 IsSickLeave = isSickLeave,
                 IsOnHoliday = isOnHoliday
             };

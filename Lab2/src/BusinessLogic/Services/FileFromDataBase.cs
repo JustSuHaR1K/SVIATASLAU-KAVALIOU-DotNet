@@ -13,9 +13,9 @@ namespace BusinessLogic.Services
     {
         private readonly IRepository<ClientDto> _clientsRepository;
 
-        private readonly IRepository<EventDto> _carsRepository;
+        private readonly IRepository<EventDto> _eventsRepository;
 
-        private readonly IRepository<MasterDto> _driversRepository;
+        private readonly IRepository<MasterDto> _mastersRepository;
 
         private readonly IRepository<OrderDto> _ordersRepository;
 
@@ -23,30 +23,30 @@ namespace BusinessLogic.Services
 
         private readonly IWriter _writer;
 
-        public FileFromDataBase(IRepository<ClientDto> clientsRepository, IRepository<EventDto> carsRepository, IRepository<MasterDto> driversRepository, IRepository<OrderDto> ordersRepository, IMapper mapper, IWriter writer)
+        public FileFromDataBase(IRepository<ClientDto> clientsRepository, IRepository<EventDto> eventsRepository, IRepository<MasterDto> mastersRepository, IRepository<OrderDto> ordersRepository, IMapper mapper, IWriter writer)
         {
             _clientsRepository = clientsRepository;
-            _carsRepository = carsRepository;
-            _driversRepository = driversRepository;
+            _eventsRepository = eventsRepository;
+            _mastersRepository = mastersRepository;
             _ordersRepository = ordersRepository;
             _mapper = mapper;
             _writer = writer;
         }
 
-        public void ImportAndExportData(string carsPath, string clientsPath, string driversPath, string ordersPath)
+        public void ImportAndExportData(string eventsPath, string clientsPath, string mastersPath, string ordersPath)
         {
             //Read data
-            var cars = _mapper.Map<IEnumerable<Models.Event>>(_carsRepository.Get());
+            var events = _mapper.Map<IEnumerable<Event>>(_eventsRepository.Get());
             var clients = _mapper.Map<IEnumerable<Client>>(_clientsRepository.Get());
-            var drivers = _mapper.Map<IEnumerable<Master>>(_driversRepository.Get());
+            var masters = _mapper.Map<IEnumerable<Master>>(_mastersRepository.Get());
             var orders = _mapper.Map<IEnumerable<Order>>(_ordersRepository.Get());
 
             //Write data
             try
             {
-                _writer.Write(cars, carsPath);
+                _writer.Write(events, eventsPath);
                 _writer.Write(clients, clientsPath);
-                _writer.Write(drivers, driversPath);
+                _writer.Write(masters, mastersPath);
                 _writer.Write(orders, ordersPath);
             }
             catch (IOException)

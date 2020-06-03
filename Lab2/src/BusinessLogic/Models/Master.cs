@@ -7,11 +7,11 @@ namespace BusinessLogic.Models
     {
         public int Id { get; set; }
 
-        public int? EventId { get; set; }
+        public int? EventusId { get; set; }
 
         [Required]
-        [Range(1, 1000, ErrorMessage = "Call sing must be between 1 and 1000")]
-        public int CallSign { get; set; }
+        [StringLength(30, MinimumLength = 2, ErrorMessage = "Profession name length must be between 2 and 30")]
+        public string Profession { get; set; }
 
         [Required]
         [StringLength(30, MinimumLength = 2, ErrorMessage = "Surname length must be between 2 and 30")]
@@ -26,12 +26,12 @@ namespace BusinessLogic.Models
         public string Patronymic { get; set; }
 
         [Required]
-        [StringLength(30, MinimumLength = 5, ErrorMessage = "Driver license number must be between 5 and 30")]
+        [StringLength(30, MinimumLength = 5, ErrorMessage = "Master license number must be between 5 and 30")]
         public string MasterLicenseNumber { get; set; }
 
         [Required]
-        [Range(typeof(DateTime), "1/1/1950", "1/1/2100", ErrorMessage = "Date is out of Range")]
-        public DateTime DateOfIssueOfDriversLicense { get; set; }
+        [Range(typeof(DateTime), "1/1/2007", "1/1/2100", ErrorMessage = "Date is out of Range")]
+        public DateTime DateOfIssueOfAnEntrepreneurialLicense { get; set; }
 
         [Required]
         public bool IsSickLeave { get; set; }

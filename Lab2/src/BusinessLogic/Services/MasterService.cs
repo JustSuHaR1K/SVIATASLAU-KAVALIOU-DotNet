@@ -50,16 +50,16 @@ namespace Eventus.BusinessLogic.Services
             return _mapper.Map<IEnumerable<Master>>(await _masterRepository.Get());
         }
 
-        public async Task<Master> FindByDriverLicenseNumber(string licenseNumber)
+        public async Task<Master> FindByMasterLicenseNumber(string licenseNumber)
         {
             var masters = await _masterRepository.Get();
             return _mapper.Map<Master>(masters.FirstOrDefault(e => e.MasterLicenseNumber.Equals(licenseNumber)));
         }
 
-        public async Task GiveCar(int masterId, int eventId)
+        public async Task GiveEvent(int masterId, int eventId)
         {
             var master = await _masterRepository.FindById(masterId);
-            master.EventId = eventId;
+            master.EventusId = eventId;
             await _masterRepository.Update(master);
         }
 
@@ -68,7 +68,7 @@ namespace Eventus.BusinessLogic.Services
             var masters = await _masterRepository.Get();
             try
             {
-                var resultOfFind = masters.Single(e => e.MasterLicenseNumber.Equals(master.MasterLicenseNumber) || e.DateOfIssueOfDriversLicense.Equals(master.DateOfIssueOfDriversLicense) || e.CallSign == master.CallSign);
+                var resultOfFind = masters.Single(e => e.MasterLicenseNumber.Equals(master.MasterLicenseNumber) || e.DateOfIssueOfAnEntrepreneurialLicense.Equals(master.DateOfIssueOfAnEntrepreneurialLicense) || e.Profession == master.Profession);
                 return false;
             }
             catch (ArgumentNullException)

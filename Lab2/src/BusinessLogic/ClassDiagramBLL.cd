@@ -1,88 +1,58 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="BusinessLogic.Services.Mapper.EventProfile" Collapsed="true">
-    <Position X="16" Y="0.5" Width="1.5" />
+    <Position X="17.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Mapper\EventProfile.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BusinessLogic.Models.Client" Collapsed="true">
-    <Position X="10.75" Y="0.5" Width="1.5" />
+    <Position X="14" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACACAAAAAAAAAAAAAAAAQABAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Client.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BusinessLogic.Models.Event" Collapsed="true">
-    <Position X="14.25" Y="0.5" Width="1.5" />
+    <Position X="15.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACEAAAAAAAgAAAAAQAAAAAAAAAAEAAAAgAgAAAAAA=</HashCode>
+      <HashCode>AAACAAAgAAAgAAAAAAAAAAAAAAAAAAQAAAAACAAAAAA=</HashCode>
       <FileName>Models\Event.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BusinessLogic.Models.Master" Collapsed="true">
-    <Position X="10.75" Y="2.5" Width="1.5" />
+    <Position X="15.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACACIAAAAAAQAABAAAAASABAAAAAAAAAwAAAAAAAA=</HashCode>
+      <HashCode>AAACACAAAAAAAQCgAQAAAAQABAAAAAAAAAggAAAAAAA=</HashCode>
       <FileName>Models\Master.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BusinessLogic.Models.Order" Collapsed="true">
-    <Position X="14.25" Y="2.5" Width="1.5" />
+    <Position X="14" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACACAAAAAAABAAgAAAABAAAAAAAABBAgAAAAAAAAA=</HashCode>
+      <HashCode>AAAGACAAAAAAAAAAgAAAABAAAAAAAABBAgAAAAAAAAA=</HashCode>
       <FileName>Models\Order.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BusinessLogic.Services.DataBaseFromFile" Collapsed="true">
-    <Position X="12.5" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAEAAAAAAAAAAAAAAAABAAAAAAAAAQAIAAAAAJgAAAA=</HashCode>
-      <FileName>Services\DataBaseFromFile.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="BusinessLogic.Services.FileFromDataBase" Collapsed="true">
-    <Position X="12.5" Y="1.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAABAAAAAAAAAQAIAAAAAIgAAIA=</HashCode>
-      <FileName>Services\FileFromDataBase.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="BusinessLogic.Services.JsonReader" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="14.25" Y="1.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Services\JsonReader.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="BusinessLogic.Services.JsonWriter" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="16" Y="1.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
-      <FileName>Services\JsonWriter.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
   <Class Name="Eventus.BusinessLogic.Services.EventService" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="10.75" Y="1.5" Width="1.5" />
+    <Position X="14" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAYAQAQAAAAAAAAAKAABAAAAAAEBEAAAAwAAAAAAAAA=</HashCode>
+      <HashCode>AQYAQAAAAAAAAAAAAAABAAAgAAEBEAAAAwQAAAAAAAA=</HashCode>
       <FileName>Services\EventService.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Eventus.BusinessLogic.Services.MasterService" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="12.5" Y="2.5" Width="1.5" />
+    <Position X="17.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ACYAAAAAAAABAAAAAAABAAEAAAEBAAAAAwAAAAAAAAA=</HashCode>
+      <HashCode>AAYAAAAAAAAgAAAAAAAFAAAAAAEBEAAAAwAAAAAAAAA=</HashCode>
       <FileName>Services\MasterService.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Eventus.BusinessLogic.Services.OrderService" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="16" Y="2.5" Width="1.5" />
+    <Position X="15.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAYAAAAAAAAAAAAAAAABAAAAAAUBAAAAAgAAABAAgAA=</HashCode>
       <FileName>Services\OrderService.cs</FileName>
@@ -90,52 +60,38 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Eventus.BusinessLogic.Validations.Validation" Collapsed="true">
-    <Position X="10.75" Y="3.5" Width="1.5" />
+    <Position X="17.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Validations\Validation.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="Eventus.BusinessLogic.Interfaces.IEventService" Collapsed="true">
-    <Position X="3.75" Y="1.75" Width="1.5" />
+    <Position X="7" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAQAAAAAAAAAKAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAQQAAAAAAAA=</HashCode>
       <FileName>Interfaces\IEventService.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="Eventus.BusinessLogic.Interfaces.IManager&lt;T&gt;" Collapsed="true">
-    <Position X="6" Y="0.5" Width="1.5" />
+    <Position X="9.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAYAAAAAAAAAAAAAAAAAAAAAAAEBAAAAAgAAAAAAAAA=</HashCode>
       <FileName>Interfaces\IManager.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="Eventus.BusinessLogic.Interfaces.IMasterService" Collapsed="true">
-    <Position X="6" Y="1.75" Width="1.5" />
+    <Position X="9.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAgAAAAAAAEAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
       <FileName>Interfaces\IMasterService.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="Eventus.BusinessLogic.Interfaces.IOrderService" Collapsed="true">
-    <Position X="8.25" Y="1.75" Width="1.5" />
+    <Position X="11.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAgAA=</HashCode>
       <FileName>Interfaces\IOrderService.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="BusinessLogic.Interfaces.IReader" Collapsed="true">
-    <Position X="10.75" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Interfaces\IReader.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="BusinessLogic.Interfaces.IWriter" Collapsed="true">
-    <Position X="12.5" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
-      <FileName>Interfaces\IWriter.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Segoe UI" Size="9" />

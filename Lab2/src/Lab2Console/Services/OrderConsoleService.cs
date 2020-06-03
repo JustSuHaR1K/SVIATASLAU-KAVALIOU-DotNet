@@ -113,7 +113,7 @@ namespace Eventus.ConsoleUI.Services
         public static void ShowOrders(IEnumerable<Order> orders)
         {
             Console.Clear();
-            Console.WriteLine($"Cost | Date | Distance | Discount | Is done");
+            Console.WriteLine($"Cost | Date | Distance to party | Discount | Is done");
             foreach (var order in orders)
             {
                 Console.WriteLine($"{order.Cost} | {order.Date} | {order.Distance} | {order.Discount} | {order.IsDone}");
@@ -128,7 +128,7 @@ namespace Eventus.ConsoleUI.Services
             int clientId = ConsoleHelper.EnterNumber();
             Console.WriteLine("Enter cost:");
             double cost = ConsoleHelper.EnterDoubleNumber();
-            Console.WriteLine("Enter distance:");
+            Console.WriteLine("Enter distance to party:");
             double distance = ConsoleHelper.EnterDoubleNumber();
             Console.WriteLine("Enter discount");
             double discount = ConsoleHelper.EnterDoubleNumber();

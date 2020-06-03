@@ -2,12 +2,12 @@
 {
     public enum AdminsMasterMenu
     {
-        AllDriver = 1,
-        AddDriver,
-        DeleteDriver,
-        UpdateDriver,
+        AllMaster = 1,
+        AddMaster,
+        DeleteMaster,
+        UpdateMaster,
         Find,
-        GiveCar,
+        GiveEvent,
         AdminMenu
     }
 }

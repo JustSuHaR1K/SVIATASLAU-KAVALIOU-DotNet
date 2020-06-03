@@ -9,9 +9,15 @@ namespace Eventus.ConsoleUI.Services
     {
         private readonly IConsoleService<AdminConsoleService> _adminMenu;
 
-        public RoleService(IConsoleService<AdminConsoleService> adminMenu)
+        private readonly IConsoleService<MasterConsoleService> _masterMenu;
+
+        private readonly IConsoleService<OrderConsoleService> _clientMenu;
+
+        public RoleService(IConsoleService<AdminConsoleService> adminMenu, IConsoleService<MasterConsoleService> masterMenu, IConsoleService<OrderConsoleService> clientMenu)
         {
             _adminMenu = adminMenu;
+            _masterMenu = masterMenu;
+            _clientMenu = clientMenu;
         }
 
         public void PrintMenu()
@@ -40,11 +46,13 @@ namespace Eventus.ConsoleUI.Services
 
                     case (int)MainMenu.Master:
                         {
+                            await _masterMenu.StartMenu();
                         }
                         break;
 
                     case (int)MainMenu.Client:
                         {
+                            await _clientMenu.StartMenu();
                         }
                         break;
 

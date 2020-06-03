@@ -13,22 +13,22 @@ namespace BusinessLogic.Services
     {
         private readonly IRepository<ClientDto> _clientsRepository;
 
-        private readonly IRepository<EventDto> _carsRepository;
+        private readonly IRepository<EventDto> _eventsRepository;
 
-        private readonly IRepository<MasterDto> _driversRepository;
+        private readonly IRepository<MasterDto> _mastersRepository;
 
-        private readonly IRepository<OrderDto> _orderRepository;
+        private readonly IRepository<OrderDto> _ordersRepository;
 
         private readonly IMapper _mapper;
 
         private readonly IReader _reader;
 
-        public DataBaseFromFile(IRepository<ClientDto> clientsRepository, IRepository<EventDto> carsRepository, IRepository<MasterDto> driversRepository, IRepository<OrderDto> orderRepository, IMapper mapper, IReader reader)
+        public DataBaseFromFile(IRepository<ClientDto> clientsRepository, IRepository<EventDto> eventsRepository, IRepository<MasterDto> mastersRepository, IRepository<OrderDto> ordersRepository, IMapper mapper, IReader reader)
         {
             _clientsRepository = clientsRepository;
-            _carsRepository = carsRepository;
-            _driversRepository = driversRepository;
-            _orderRepository = orderRepository;
+            _eventsRepository = eventsRepository;
+            _mastersRepository = mastersRepository;
+            _ordersRepository = ordersRepository;
             _mapper = mapper;
             _reader = reader;
         }
@@ -44,10 +44,10 @@ namespace BusinessLogic.Services
             try
             {
                 //Write data
-                _carsRepository.AddRange(carsList);
+                _eventsRepository.AddRange(carsList);
                 _clientsRepository.AddRange(clientsList);
-                _driversRepository.AddRange(driversList);
-                _orderRepository.AddRange(ordersList);
+                _mastersRepository.AddRange(driversList);
+                _ordersRepository.AddRange(ordersList);
             }
             catch (DbUpdateException)
             {

@@ -1,5 +1,4 @@
-﻿using BusinessLogic.Models;
-using NLog;
+﻿using NLog;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -47,13 +46,13 @@ namespace Eventus.ConsoleUI.Services
                 int.TryParse(Console.ReadLine(), out int menuNumber);
                 switch (menuNumber)
                 {
-                    case (int)AdminsEventMenu.AllCar:
+                    case (int)AdminsEventMenu.AllEvent:
                         {
                             ShowEvents(await _eventProcessing.GetAll());
                         }
                         break;
 
-                    case (int)AdminsEventMenu.AddCar:
+                    case (int)AdminsEventMenu.AddEvent:
                         {
                             var eventus = CreateEvent();
                             var validResults = eventus.IsValid();
@@ -74,7 +73,7 @@ namespace Eventus.ConsoleUI.Services
                                 }
                                 else
                                 {
-                                    Console.WriteLine("This car is already on the list");
+                                    Console.WriteLine("This event is already on the list");
                                 }
                             }
                             Console.ReadKey();
@@ -83,7 +82,7 @@ namespace Eventus.ConsoleUI.Services
 
                     case (int)AdminsEventMenu.DeleteEvent:
                         {
-                            Console.WriteLine("Enter car id");
+                            Console.WriteLine("Enter event id");
                             try
                             {
                                 await _eventProcessing.Delete(ConsoleHelper.EnterNumber());
@@ -92,7 +91,7 @@ namespace Eventus.ConsoleUI.Services
                             catch (DbException exception)
                             {
                                 _logger.Error($"Failed to remove:{exception.Message}");
-                                Console.WriteLine("Failed to remove the car");
+                                Console.WriteLine("Failed to remove the event");
                             }
                             catch (Exception exception)
                             {
@@ -109,7 +108,7 @@ namespace Eventus.ConsoleUI.Services
                         }
                         break;
 
-                    case (int)AdminsEventMenu.OnRepair:
+                    case (int)AdminsEventMenu.OnRework:
                         {
                             ShowEvents(await _eventProcessing.GetEventOnRework());
                         }
@@ -119,9 +118,9 @@ namespace Eventus.ConsoleUI.Services
                         {
                             try
                             {
-                                var eventus = await _eventProcessing.FindByGovernmentNumber(Console.ReadLine());
-                                Console.WriteLine("Goverment number | Model | Color | Registration number | Year of issue | Is repair");
-                                Console.WriteLine($"{eventus.GovernmentNumber} | {eventus.Model} | {eventus.Color} | {eventus.RegistrationNumber} | {eventus.YearOfIssue} | {eventus.IsRework}");
+                                var eventus = await _eventProcessing.FindByGovernmentNumberOfService(Console.ReadLine());
+                                Console.WriteLine("Name of Event | Government number of service | Description | Price of the event | Event duration | Is rework");
+                                Console.WriteLine($"{eventus.NameOfEvent} | {eventus.GovernmentNumberOfService} | {eventus.Description} | {eventus.PriceOfTheEvent} | {eventus.EventDuration} | {eventus.IsRework}");
                             }
                             catch (Exception exception)
                             {
@@ -133,11 +132,11 @@ namespace Eventus.ConsoleUI.Services
                         }
                         break;
 
-                    case (int)AdminsEventMenu.OldEvent:
+                    case (int)AdminsEventMenu.LongEvent:
                         {
                             Console.Clear();
-                            Console.WriteLine("Max age:");
-                            ShowEvents(await _eventProcessing.GetOldEvents(ConsoleHelper.EnterNumber()));
+                            Console.WriteLine("Max duration:");
+                            ShowEvents(await _eventProcessing.GetLongEvents(ConsoleHelper.EnterNumber()));
                         }
                         break;
 
@@ -158,10 +157,10 @@ namespace Eventus.ConsoleUI.Services
         private static void ShowEvents(IEnumerable<global::BusinessLogic.Models.Event> events)
         {
             Console.Clear();
-            Console.WriteLine("Goverment number | Model | Color | Registration number | Year of issue | Is repair");
+            Console.WriteLine("Name of Event | Government number of service | Description | Price of the event | Event duration | Is rework");
             foreach (var eventus in events)
             {
-                Console.WriteLine($"{eventus.GovernmentNumber} | {eventus.Model} | {eventus.Color} | {eventus.RegistrationNumber} | {eventus.YearOfIssue} | {eventus.IsRework}");
+                Console.WriteLine($"{eventus.NameOfEvent} | {eventus.GovernmentNumberOfService} | {eventus.Description} | {eventus.PriceOfTheEvent} | {eventus.EventDuration} | {eventus.IsRework}");
             }
             Console.ReadKey();
         }
@@ -169,17 +168,17 @@ namespace Eventus.ConsoleUI.Services
         private static global::BusinessLogic.Models.Event CreateEvent()
         {
             Console.Clear();
-            Console.WriteLine("Enter government number:");
+            Console.WriteLine("Enter name:");
+            string nameOfEvent = Console.ReadLine();
+            Console.WriteLine("Enter government number of service:");
             string governmentNumber = Console.ReadLine();
-            Console.WriteLine("Enter registration number:");
-            string registrationNumber = Console.ReadLine();
-            Console.WriteLine("Enter model:");
-            string model = Console.ReadLine();
-            Console.WriteLine("Enter color:");
-            string color = Console.ReadLine();
-            Console.WriteLine("Enter year of issue:");
-            int yearOfIssue = ConsoleHelper.EnterNumber();
-            Console.WriteLine("Enter the state of the eventus (repair 1, otherwise 0)");
+            Console.WriteLine("Enter description:");
+            string description = Console.ReadLine();
+            Console.WriteLine("Enter price of the event number:");
+            int priceOfTheEvent = ConsoleHelper.EnterNumber();
+            Console.WriteLine("Enter event duration:");
+            int eventDuration = ConsoleHelper.EnterNumber();
+            Console.WriteLine("Enter the state of the eventus (rework 1, otherwise 0)");
             string chooseState = Console.ReadLine();
             bool isRework;
 
@@ -194,11 +193,11 @@ namespace Eventus.ConsoleUI.Services
 
             var eventus = new global::BusinessLogic.Models.Event()
             {
-                GovernmentNumber = governmentNumber,
-                Model = model,
-                Color = color,
-                YearOfIssue = yearOfIssue,
-                RegistrationNumber = registrationNumber,
+                NameOfEvent = nameOfEvent,
+                GovernmentNumberOfService = governmentNumber,
+                Description = description,
+                EventDuration = eventDuration,
+                PriceOfTheEvent = priceOfTheEvent,
                 IsRework = isRework
             };
 

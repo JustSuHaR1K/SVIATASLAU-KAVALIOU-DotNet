@@ -1,6 +1,4 @@
 ﻿using AutoMapper;
-using BusinessLogic.Interfaces;
-using BusinessLogic.Services;
 using BusinessLogic.Services.Mapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -15,7 +13,8 @@ using Eventus.ConsoleUI.Services;
 using Eventus.DAL.Interfaces;
 using Eventus.DAL.Models;
 using Eventus.DAL.Repositories;
-
+using BusinessLogic.Services;
+using BusinessLogic.Interfaces;
 
 namespace Eventus.ConsoleUI.Configuration
 {

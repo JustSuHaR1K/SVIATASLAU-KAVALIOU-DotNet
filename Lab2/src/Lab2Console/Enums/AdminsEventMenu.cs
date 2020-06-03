@@ -2,13 +2,13 @@
 {
     internal enum AdminsEventMenu
     {
-        AllCar = 1,
-        AddCar,
+        AllEvent = 1,
+        AddEvent,
         DeleteEvent,
         UpdateEvent,
-        OnRepair,
+        OnRework,
         Find,
-        OldEvent,
+        LongEvent,
         AdminMenu
     }
 }
