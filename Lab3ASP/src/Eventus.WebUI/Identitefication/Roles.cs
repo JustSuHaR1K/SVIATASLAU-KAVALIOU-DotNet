@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Eventus.WebUI.Identitefication;
 
-namespace Eventus.WebUI
+namespace Eventus.WebUI.Identitefication
 {
     public class Roles
     {

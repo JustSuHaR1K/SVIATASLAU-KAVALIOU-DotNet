@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Eventus.DAL.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace EventusDAL.Repositories
 {
-    public class EventContext : DbContext
+    public class EventContext : IdentityDbContext<UserDto>
     {
         public EventContext(DbContextOptions<EventContext> options)
             : base(options)
@@ -18,5 +19,10 @@ namespace EventusDAL.Repositories
         public DbSet<MasterDto> Masters { get; set; }
 
         public DbSet<OrderDto> Orders { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
