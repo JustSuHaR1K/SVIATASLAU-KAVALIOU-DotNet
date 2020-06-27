@@ -16,8 +16,6 @@ using Eventus.WebUI.Mapper;
 using EventusDAL.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
-using Eventus.WebUI.Identitefication;
-using System.Reflection;
 
 namespace Eventus.WebUI
 {
@@ -35,39 +33,17 @@ namespace Eventus.WebUI
         {
             services.AddControllersWithViews();
             services.AddRazorPages();
-            var businessAssembly = Assembly.Load("Eventus.BusinessLogic");
-            services.AddDbContext<EventContext>(options => options.UseSqlServer(Configuration.GetConnectionString("EventConnection")).UseLoggerFactory(EventLoggerFactory(Configuration)))
-                   .Scan(scan => scan.FromAssemblies(businessAssembly)
-                                     .AddClasses(classes => classes.Where(type => type.Name.EndsWith("Service")))
-                                     .AsSelf()
-                                     .WithScopedLifetime())
-                   .AddAutoMapper(typeof(EventProfile))
-                   .AddScoped(typeof(IRepository<>), typeof(EventRepository<>));
-            
-            
-            services.Scan(scan => scan
-                .FromAssembliesOf(typeof(IIdentityService))
-                    .AddClasses(classes => classes.AssignableTo(typeof(IIdentityService)))
-                    .AsImplementedInterfaces()
-                    .WithTransientLifetime());
-            services.Scan(scan => scan
-                .FromAssembliesOf(typeof(IManager<>))
-                    .AddClasses(classes => classes.AssignableTo(typeof(IManager<>)))
-                    .AsImplementedInterfaces()
-                    .WithTransientLifetime());
-            //services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<EventContext>();
+
+            services.AddDbContext<EventContext>(options => options
+            .UseSqlServer(Configuration.GetConnectionString("EventConnection"))
+            .UseLoggerFactory(EventLoggerFactory(Configuration)));
+
+            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<EventContext>();
 
             services.AddTransient<IRepository<EventDto>, EventRepository<EventDto>>();
             services.AddTransient<IRepository<ClientDto>, EventRepository<ClientDto>>();
             services.AddTransient<IRepository<MasterDto>, EventRepository<MasterDto>>();
             services.AddTransient<IRepository<OrderDto>, EventRepository<OrderDto>>();
-            
-
-            services.AddSingleton<IdentityInitializer>();
-
-            services.AddIdentity<UserDto, IdentityRole>()
-              .AddEntityFrameworkStores<EventContext>()
-              .AddDefaultTokenProviders();
 
             services.AddTransient<IMasterService, MasterService>();
             services.AddTransient<IEventService, EventService>();
@@ -88,10 +64,8 @@ namespace Eventus.WebUI
         {
             if (env.IsDevelopment())
             {
-                var identityInitializer = app?.ApplicationServices.GetService<IdentityInitializer>();
-                identityInitializer.Seed().GetAwaiter().GetResult();
                 app.UseDeveloperExceptionPage();
-                app.UseBrowserLink();
+                //app.UseBrowserLink();
             }
             else
             {
@@ -99,7 +73,6 @@ namespace Eventus.WebUI
                 
                 app.UseHsts();
             }
-            app.UseHttpsRedirection();
 
             app.UseStaticFiles();
 

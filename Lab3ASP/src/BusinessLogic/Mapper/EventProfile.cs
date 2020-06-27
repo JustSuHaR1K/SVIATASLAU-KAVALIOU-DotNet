@@ -12,7 +12,6 @@ namespace BusinessLogic.Services.Mapper
             CreateMap<ClientDto, Client>().ReverseMap();
             CreateMap<MasterDto, Master>().ReverseMap();
             CreateMap<OrderDto, Order>().ReverseMap();
-            CreateMap<UserDto, User>().ReverseMap();
         }
     }
 }
