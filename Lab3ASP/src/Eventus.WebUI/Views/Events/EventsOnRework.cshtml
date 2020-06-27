@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Eventus.WebUI.ViewModels.EventViewModel>
+
+@{
+    ViewData["Title"] = "EventsOnRework";
+}
+
+<h1>EventsOnRework</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NameOfEvent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CodeNumberOfService)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventDuration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PriceOfTheEvent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsRework)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameOfEvent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodeNumberOfService)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventDuration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PriceOfTheEvent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsRework)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<div>
+    <a asp-action="Events">Back to List</a>
+</div>

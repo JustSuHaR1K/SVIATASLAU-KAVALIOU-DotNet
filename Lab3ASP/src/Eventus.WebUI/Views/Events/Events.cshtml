@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Eventus.WebUI.ViewModels.EventViewModel>
+
+@{
+    ViewData["Title"] = "Events";
+}
+
+<h1>Events</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+    <a asp-action="EventsOnRework">Events on rework</a>
+</p>
+<form asp-action="LongEvents">
+    Duration
+    <input type="number" name="duration" />
+    <input type="submit" value="LongEvents" />
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NameOfEvent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CodeNumberOfService)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventDuration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PriceOfTheEvent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsRework)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td asp-display-for="@item.Id"></td>
+                <td asp-display-for="@item.NameOfEvent"></td>
+                <td asp-display-for="@item.CodeNumberOfService"></td>
+                <td asp-display-for="@item.Description"></td>
+                <td asp-display-for="@item.EventDuration"></td>
+                <td asp-display-for="@item.PriceOfTheEvent"></td>
+                <td asp-display-for="@item.IsRework"></td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>|
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+}
+    </tbody>
+</table>

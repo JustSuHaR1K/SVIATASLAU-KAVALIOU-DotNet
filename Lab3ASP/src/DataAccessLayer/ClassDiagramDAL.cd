@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Eventus.DAL.Models.ClientDto" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECACABAAAAAAAAAAAAAIQABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ClientDto.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Eventus.DAL.Models.EventDto" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACEAAAAIAAgACAAAQAAIAAAAAAAEAAAAgAgAAAAAA=</HashCode>
+      <FileName>Models\EventDto.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Eventus.DAL.Models.MasterDto" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECACEBAAAAAQCABAAAAISABgAAAAAAAAwAAAAAAAA=</HashCode>
+      <FileName>Models\MasterDto.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Eventus.DAL.Models.OrderDto" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACACAAAIAAABCAgAAAAJAAAAAAAABBAgAABAAAAAQ=</HashCode>
+      <FileName>Models\OrderDto.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Eventus.DAL.Repositories.EventContext" Collapsed="true">
+    <Position X="5.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAACAAAAAQAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\EventContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Eventus.DAL.Repositories.EventRepository&lt;TEntity&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAABABAAAAAJAAAAAABAEAAAAAAAAAEAAA=</HashCode>
+      <FileName>Repositories\EventRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="Eventus.DAL.Interfaces.IEntity" Collapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IEntity.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Eventus.DAL.Interfaces.IRepository&lt;TEntity&gt;" Collapsed="true">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAABAAAAABAAAAAABAEAAAAAAAAAEAAA=</HashCode>
+      <FileName>Interfaces\IRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

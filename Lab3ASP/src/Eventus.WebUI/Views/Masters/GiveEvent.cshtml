@@ -1,0 +1,35 @@
+﻿@model Eventus.WebUI.ViewModels.GiveEventViewModel
+
+@{ ViewData["Title"] = "Give the event to the master"; }
+
+<h1>Give event</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="GiveEvent">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="MasterLicenseNumber" class="control-label"></label>
+                <input asp-for="MasterLicenseNumber" class="form-control" />
+                <span asp-validation-for="MasterLicenseNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EventCodeNumber" class="control-label"></label>
+                <input asp-for="EventCodeNumber" class="form-control" />
+                <span asp-validation-for="EventCodeNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Masters">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

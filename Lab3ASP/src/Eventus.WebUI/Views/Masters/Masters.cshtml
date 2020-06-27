@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Eventus.WebUI.ViewModels.MasterViewModel>
+
+@{
+    ViewData["Title"] = "Masters";
+}
+
+<<h1>Masters and their event</h1>
+
+<p>
+    <a asp-action="Create">Create new</a>
+    <a asp-action="GiveEvent">Give event</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Profession)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Surname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Patronymic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MasterLicenseNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfIssueOfAnEntrepreneurialLicense)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsSickLeave)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsOnHoliday)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Event.CodeNumberOfService)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Event.NameOfEvent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Event.PriceOfTheEvent)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+<tr>
+    <td asp-display-for="@item.Profession"></td>
+    <td asp-display-for="@item.Surname"></td>
+    <td asp-display-for="@item.Name"></td>
+    <td asp-display-for="@item.Patronymic"></td>
+    <td asp-display-for="@item.MasterLicenseNumber"></td>
+    <td asp-display-for="@item.DateOfIssueOfAnEntrepreneurialLicense"></td>
+    <td asp-display-for="@item.IsSickLeave"></td>
+    <td asp-display-for="@item.IsOnHoliday"></td>
+    <td asp-display-for="@item.Event.CodeNumberOfService"></td>
+    <td asp-display-for="@item.Event.NameOfEvent"></td>
+    <td asp-display-for="@item.Event.PriceOfTheEvent"></td>
+    <td>
+        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>|
+        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+    </td>
+</tr>}
+    </tbody>
+</table>
